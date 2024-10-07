@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+environment {
+        PATH = "C:\\WINDOWS\\SYSTEM32"
+    }
+tools {
+        maven 'Maven' 
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the code from the Git repository
+                git 'https://github.com/FadwaLacham/PainCare.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Run Maven build on Windows
+                bat 'mvn clean package'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Run unit tests on Windows
+                bat 'mvn test'
+            }
+
+            post {
+                // Archive test results
+                always {
+                    junit '**/target/surefire-reports/*.xml'
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // This is optional, but if you want to deploy, define it here
+                echo 'Deploying the application...'
+            }
+        }
+    }
+
+    post {
+        always {
+            // Clean up after build
+            cleanWs()
+        }
+    }
+}
