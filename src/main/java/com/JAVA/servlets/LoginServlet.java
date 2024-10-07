@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpSession;
 public class LoginServlet extends HttpServlet {
     // ... (imports et autres annotations)
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");

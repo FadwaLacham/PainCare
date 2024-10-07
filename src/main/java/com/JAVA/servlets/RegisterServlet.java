@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class RegisterServlet extends HttpServlet {
     // ... (imports et autres annotations de servlet)
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Récupérer les paramètres du formulaire
         String name = request.getParameter("name");

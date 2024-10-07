@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/logoutServlet")
 public class LogoutServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Invalidating the session
         HttpSession session = request.getSession(false);
